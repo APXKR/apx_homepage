@@ -47,11 +47,10 @@ const InteractiveSolutionSection = () => {
             <SectionWrapper>
                 <div className="text-left">
                     <SectionHeading 
-                        title="나만의 성과 실현 솔루션을 직접 구성해보세요"
-                        subtitle="인터랙티브 솔루션"
+                        title="나만의 솔루션 포트폴리오를 직접 구성해 보세요"
                     />
                     <p className="max-w-3xl mt-6 text-lg text-[var(--text-secondary)]">
-                        APX의 솔루션 DB에서 조직에 필요한 해결책을 필터링하고 검색하여 '나의 포트폴리오'에 담아 즉시 맞춤 상담을 요청하세요.
+                        APX Solution DB에서 조직에 필요한 해결책을 확인하고 '나의 포트폴리오'에 담아 무료 상담을 요청하세요.
                     </p>
                 </div>
 
