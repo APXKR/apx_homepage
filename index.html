@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APX Consulting Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+      :root {
+        /* Primary Colors */
+        --apx-navy: #1B365D;
+        --growth-blue: #2E5BBA;
+        --insight-orange: #F4A261;
+        /* Secondary Colors */
+        --excellence-gray: #4A5568;
+        --partnership-green: #38A169;
+        --innovation-purple: #805AD5;
+        /* Neutral Colors */
+        --text-primary: #1A202C;
+        --text-secondary: #4A5568;
+        --text-tertiary: #A0AEC0;
+        --border-light: #E2E8F0;
+        --bg-primary: #FFFFFF;
+        --bg-secondary: #F7FAFC;
+        --bg-secondary-alt: #EDF2F7;
+        --bg-dark: #2D3748;
+        /* Action Colors */
+        --link-default: #3182CE;
+        --link-hover: #2C5AA0;
+        /* Status Colors */
+        --status-success: #38A169;
+        --status-warning: #D69E2E;
+        --status-error: #E53E3E;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Pretendard', 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: var(--bg-primary);
+        color: var(--text-secondary);
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-fade-in {
+        opacity: 0;
+        transition: opacity 1s ease-out, transform 1s ease-out;
+        transform: translateY(30px);
+      }
+      .section-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
