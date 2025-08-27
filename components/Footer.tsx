@@ -1,5 +1,5 @@
 import React from 'react';
-import ApxLogoWhite from './icons/ApxLogoWhite';
+import ApxLogo from './icons/ApxLogoWhite';
 
 
 const Footer: React.FC = () => {
@@ -21,17 +21,14 @@ const Footer: React.FC = () => {
           {/* Column 1: Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#" onClick={scrollUp} className="inline-block mb-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--bg-dark)] focus-visible:ring-white rounded-sm">
-              <ApxLogoWhite className="h-10" />
+              <ApxLogo variant="white" className="h-10" />
             </a>
-            <p className="text-[var(--text-tertiary)] text-sm max-w-xs mb-4">
-              조직의 잠재력을 성과로 바꾸는 성장 시스템
-            </p>
-            <address className="not-italic text-sm text-[var(--text-tertiary)] space-y-2">
-              <p><strong>대표전화:</strong> 010-9704-4482</p>
-              <p><strong>이메일:</strong> support@apxc.co.kr</p>
-              <p><strong>주소:</strong> 서울특별시 강남구 테헤란로 128, 317호</p>
-              <p><strong>대표이사:</strong> 김혜숙</p>
-              <p><strong>사업자등록번호:</strong> 368-87-03618</p>
+            <address className="not-italic text-sm text-[var(--text-tertiary)] space-y-1">
+              <p className="font-semibold text-white mb-2">(주)에이피엑스컨설팅</p>
+              <p><strong className="font-semibold text-gray-300">대표이사</strong> 김혜숙</p>
+              <p><strong className="font-semibold text-gray-300">사업자등록번호</strong> 368-87-03618</p>
+              <p><strong className="font-semibold text-gray-300">본사</strong> 06234 서울특별시 강남구 테헤란로 128, 317호</p>
+              <p><strong className="font-semibold text-gray-300">이메일</strong> support@apxc.co.kr</p>
             </address>
           </div>
 

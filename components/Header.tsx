@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { NavLink } from '../types';
 import MenuIcon from './icons/MenuIcon';
 import CloseIcon from './icons/CloseIcon';
+import ApxLogo from './icons/ApxLogoWhite';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -61,7 +62,7 @@ const Header: React.FC = () => {
     <header className="sticky top-0 z-[100] h-[64px] md:h-[72px] bg-white/95 backdrop-blur-md border-b border-[var(--border-light)]">
       <div className="flex items-center justify-between h-full max-w-screen-xl mx-auto px-6 md:px-[60px]">
         <a href="#" aria-label="APX Consulting 홈페이지로 이동" onClick={() => setActiveLink('')} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-[var(--growth-blue)] rounded-sm">
-          <img src="/apx-logo-dark.png" alt="APX Consulting 로고" className="h-8 md:h-10 object-contain" />
+          <ApxLogo variant="black" className="h-8 md:h-10" />
         </a>
 
         <nav className="hidden md:flex items-center gap-x-10" aria-label="메인 네비게이션">
