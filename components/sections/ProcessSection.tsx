@@ -4,7 +4,7 @@ import SectionHeading from '../common/SectionHeading';
 import ProcessFlow from '../infographics/ProcessFlow';
 
 const ProcessSection = () => (
-     <section className="py-20 md:py-28 bg-[var(--bg-secondary)]">
+     <section className="py-24 md:py-32 bg-[var(--bg-secondary)]">
         <SectionWrapper>
             <SectionHeading 
                 title={

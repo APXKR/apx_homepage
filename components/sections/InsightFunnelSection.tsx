@@ -4,7 +4,7 @@ import SectionHeading from '../common/SectionHeading';
 import InsightFunnelDiagram from '../infographics/InsightFunnelDiagram';
 
 const InsightFunnelSection = () => (
-    <section className="py-20 md:py-28 bg-[var(--bg-dark)]">
+    <section className="py-24 md:py-32 bg-[var(--bg-dark)]">
         <SectionWrapper>
              <SectionHeading 
                 title={

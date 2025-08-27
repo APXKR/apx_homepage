@@ -1,9 +1,4 @@
 
-export interface NavLink {
-  name: string;
-  href: string;
-}
-
 export interface Solution {
   id: string;
   name: string;

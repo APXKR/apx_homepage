@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HeroSection = () => (
-    <section className="relative flex flex-col justify-center min-h-[80vh] py-20 bg-gradient-to-br from-[var(--apx-navy)] to-[var(--growth-blue)] text-white overflow-hidden">
+    <section className="relative flex flex-col justify-center min-h-[80vh] py-24 bg-gradient-to-br from-[var(--apx-navy)] to-[var(--growth-blue)] text-white overflow-hidden">
         <div className="w-full max-w-screen-xl mx-auto px-6 md:px-[60px]">
             <div className="relative max-w-4xl text-left" style={{ animation: 'fadeInUp 0.8s 0.2s ease-out forwards', opacity: 0 }}>
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4">

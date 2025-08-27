@@ -14,7 +14,7 @@ const FrameworkSection = () => {
     };
 
     return (
-        <section className="py-20 md:py-28 bg-[var(--bg-primary)] relative">
+        <section className="py-24 md:py-32 bg-[var(--bg-primary)] relative">
             <SectionWrapper>
                 <SectionHeading
                     title={

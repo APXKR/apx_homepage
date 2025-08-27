@@ -4,7 +4,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 const VisionSection = () => {
     const ref = useScrollAnimation();
     return (
-        <section className="py-20 md:py-32 text-left bg-[var(--bg-secondary)]">
+        <section className="py-24 md:py-32 text-left bg-[var(--bg-secondary)]">
             <div ref={ref} className="section-fade-in max-w-screen-xl mx-auto px-6 md:px-[60px]">
                 <h2 className="text-4xl md:text-5xl font-bold text-[var(--apx-navy)] mb-4">
                     리더가 가장 먼저 찾는 성장 파트너

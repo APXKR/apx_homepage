@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import type { NavLink } from '../types';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { navLinks, type NavigationLink } from '../data/navigation';
 import MenuIcon from './icons/MenuIcon';
 import CloseIcon from './icons/CloseIcon';
 import ApxLogo from './icons/ApxLogoWhite';
+import MegaMenu from './MegaMenu';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onMegaMenuToggle: (isOpen: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onMegaMenuToggle }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('솔루션');
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const menuTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const navLinks: NavLink[] = [
-    { name: '솔루션', href: '#' },
-    { name: '아카데미', href: '#' },
-    { name: '인사이트', href: '#' },
-    { name: '성공사례', href: '#' },
-    { name: '회사소개', href: '#' },
-  ];
-
+  useEffect(() => {
+    onMegaMenuToggle(activeMenu !== null);
+  }, [activeMenu, onMegaMenuToggle]);
+  
   useEffect(() => {
     const body = document.querySelector('body');
     if (body) {
-      if (isMobileMenuOpen) {
-        body.style.overflow = 'hidden';
-      } else {
-        body.style.overflow = 'auto';
-      }
+      body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
     }
     return () => {
       if (body) {
@@ -32,34 +32,47 @@ const Header: React.FC = () => {
     };
   }, [isMobileMenuOpen]);
 
+  const handleMouseLeave = () => {
+    menuTimer.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 200);
+  };
 
-  const NavItem: React.FC<{ link: NavLink; isMobile?: boolean }> = ({ link, isMobile = false }) => (
+  const handleMouseEnter = (linkName: string) => {
+    if (menuTimer.current) {
+      clearTimeout(menuTimer.current);
+    }
+    const link = navLinks.find(l => l.name === linkName);
+    if (link?.megaMenu) {
+        setActiveMenu(linkName);
+    } else {
+        handleMouseLeave();
+    }
+  };
+
+  const getActiveMenuData = () => {
+    if (!activeMenu) return undefined;
+    return navLinks.find(link => link.name === activeMenu)?.megaMenu;
+  };
+
+  const MobileNavItem: React.FC<{ link: NavigationLink }> = ({ link }) => (
     <a
       href={link.href}
       onClick={() => {
-          setActiveLink(link.name);
-          if(isMobile) setIsMobileMenuOpen(false);
+        setActiveLink(link.name);
+        setIsMobileMenuOpen(false);
       }}
-      className={`relative group font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--growth-blue)] rounded-sm
-        ${isMobile 
-          ? 'text-3xl py-4 text-center' 
-          : 'text-base tracking-[-0.02em]'}
-        ${activeLink === link.name ? 'text-[var(--apx-navy)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--apx-navy)]'}
-      `}
+      className="text-3xl py-4 text-center font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--growth-blue)] rounded-sm text-[var(--text-secondary)] hover:text-[var(--apx-navy)]"
     >
       {link.name}
-      {!isMobile && (
-        <span
-          className={`absolute -bottom-2 left-0 w-full h-[2px] bg-[var(--growth-blue)] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
-            ${activeLink === link.name ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
-          style={{ transformOrigin: 'center' }}
-        ></span>
-      )}
     </a>
   );
 
   return (
-    <header className="sticky top-0 z-[100] h-[64px] md:h-[72px] bg-white/95 backdrop-blur-md border-b border-[var(--border-light)]">
+    <header 
+      className={`sticky top-0 z-[100] h-[64px] md:h-[72px] bg-white transition-colors duration-300 ${activeMenu !== null ? 'border-b-transparent' : 'border-b border-[var(--border-light)]'}`} 
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="flex items-center justify-between h-full max-w-screen-xl mx-auto px-6 md:px-[60px]">
         <a href="#" aria-label="APX Consulting 홈페이지로 이동" onClick={() => setActiveLink('')} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-[var(--growth-blue)] rounded-sm">
           <ApxLogo variant="black" className="h-8 md:h-10" />
@@ -67,7 +80,22 @@ const Header: React.FC = () => {
 
         <nav className="hidden md:flex items-center gap-x-10" aria-label="메인 네비게이션">
           {navLinks.map((link) => (
-            <NavItem key={link.name} link={link} />
+            <div key={link.name} onMouseEnter={() => handleMouseEnter(link.name)} className="h-full flex items-center">
+              <a
+                href={link.href}
+                onClick={() => setActiveLink(link.name)}
+                className={`relative group font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--growth-blue)] rounded-sm text-base tracking-[-0.02em]
+                  ${activeLink === link.name ? 'text-[var(--apx-navy)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--apx-navy)]'}
+                `}
+              >
+                {link.name}
+                <span
+                  className={`absolute -bottom-2 left-0 w-full h-[2px] bg-[var(--growth-blue)] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+                    ${activeLink === link.name ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
+                  style={{ transformOrigin: 'center' }}
+                ></span>
+              </a>
+            </div>
           ))}
         </nav>
 
@@ -98,7 +126,7 @@ const Header: React.FC = () => {
         <div className="flex flex-col items-center justify-center h-full pt-20">
             <nav className="flex flex-col items-center gap-y-6" aria-label="모바일 네비게이션">
                 {navLinks.map((link) => (
-                    <NavItem key={link.name} link={link} isMobile />
+                    <MobileNavItem key={link.name} link={link} />
                 ))}
             </nav>
             <a
@@ -110,6 +138,14 @@ const Header: React.FC = () => {
             </a>
         </div>
       </div>
+
+      {/* Mega Menu */}
+      <MegaMenu
+        isOpen={activeMenu !== null}
+        menuData={getActiveMenuData()}
+        onMouseEnter={() => handleMouseEnter(activeMenu!)}
+        onMouseLeave={handleMouseLeave}
+      />
     </header>
   );
 };

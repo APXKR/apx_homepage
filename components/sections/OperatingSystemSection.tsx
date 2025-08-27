@@ -10,7 +10,7 @@ const OperatingSystemSection = () => {
     const infographicRef = useScrollAnimation({ threshold: 0.4 });
 
     return (
-        <section className="py-20 md:py-28 bg-gradient-to-br from-[var(--apx-navy)] to-[var(--bg-dark)]">
+        <section className="py-24 md:py-32 bg-gradient-to-br from-[var(--apx-navy)] to-[var(--bg-dark)]">
             <div className="max-w-screen-xl mx-auto px-6 md:px-[60px]">
                 <div ref={textRef} className="section-fade-in">
                     <SectionHeading

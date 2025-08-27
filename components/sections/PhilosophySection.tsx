@@ -4,7 +4,7 @@ import SectionHeading from '../common/SectionHeading';
 import KeyElementsVisualization from '../infographics/KeyElementsVisualization';
 
 const PhilosophySection = () => (
-    <section className="py-20 md:py-28 bg-[var(--bg-secondary)]">
+    <section className="py-24 md:py-32 bg-[var(--bg-secondary)]">
         <SectionWrapper>
             <SectionHeading 
                 title={
